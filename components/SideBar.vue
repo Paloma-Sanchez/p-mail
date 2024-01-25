@@ -1,0 +1,8 @@
+<template>
+    <div class="w-1/4 display:block">
+        <ul class="font-body text-center text-2xl pt-8">
+            <li class="pb-8">Inbox</li>
+            <li>Starred</li>
+        </ul>
+    </div>
+</template>
