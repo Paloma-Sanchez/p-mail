@@ -1,6 +1,7 @@
 <script setup>
     import StarOutline from '../../assets/svg/KidStarOutline.svg';
     import StarFull from '../../assets/svg/KidStarSharp.svg';
+    import {format} from 'date-fns';
     const overlayShow = ref(false);
 
     const props = defineProps({
@@ -53,13 +54,15 @@
                 <StarFull v-if="email.starred" class="place-content-center"/>
                 <StarOutline v-else/>
             </div>
+            <NuxtLink :to="`/${email.id}`">
             <div class="pl-4 pr-4">
                 <p>{{ email.from }}</p>
                 <p class="truncate"><strong>{{ email.subject }}</strong></p>
-                <p class="truncate">{{ email.body }}</p>
+                <p class="truncate font-body">{{ email.body }}</p>
             </div>
+            </NuxtLink>
             <div>
-                <p class="break-words">{{ email.sentAt }}</p>
+                <p class="break-words">{{ format(new Date(email.sentAt), 'MM dd yyyy' ) }}</p>
             </div>
         </div >
        

@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr:false,
   devtools: { enabled: true },
   postcss: {
     plugins: {
@@ -16,6 +17,8 @@ export default defineNuxtConfig({
       }
     }],
     'nuxt-svgo',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+
   ]
 });
