@@ -19,6 +19,6 @@ export default defineNuxtConfig({
     'nuxt-svgo',
     '@pinia/nuxt',
     '@vueuse/nuxt',
-
-  ]
+    
+  ],
 });

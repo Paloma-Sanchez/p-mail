@@ -3,14 +3,23 @@ import {useStorage} from '@vueuse/core';
 import {emails as emailsData} from '../assets/data/db.json';
 
 export const useMailListStore = defineStore('mailListStore', () => {
-    const emails = useStorage('emails', emailsData);
-    const selectedEmail = ref('')
+    const emails = ref([]);
+    const selectedEmail = ref({});
+    const loadingAllEmails = ref(false);
+    const loadingSelectedEmail  = ref(false);
 
-    const getEmailById = (emailId) => {
-       // console.log('value', emails.value);
-        const selectedEmail = emails.value.filter((email) => email.id === emailId )
-        console.log('selected', selectedEmail[0]);
-        return selectedEmail.value = selectedEmail[0];
+    const loadAllEmails = async () => {
+        loadingAllEmails.value = true;
+        const {data} = await useFetch('https://my-json-server.typicode.com/Paloma-Sanchez/p-mail/emails');
+        loadingAllEmails.value = false;
+        return emails.value = data.value;
+    }
+
+    const getEmailById = async (emailId) => {
+       loadingSelectedEmail.value= true;
+       const {data} = await useFetch(`https://my-json-server.typicode.com/Paloma-Sanchez/p-mail/emails/${emailId}`);
+       loadingSelectedEmail.value= false; 
+       return selectedEmail.value = data.value;
     }
 
     const toggleStarred = (emailIndex) => {
@@ -29,10 +38,15 @@ export const useMailListStore = defineStore('mailListStore', () => {
 
     return {
         emails,
+        loadingAllEmails,
+        loadingSelectedEmail,
+        selectedEmail,
         toggleStarred,
         toggleRead,
         toggleArchived,
         getEmailById,
-        selectedEmail
+        loadAllEmails,
+        
+        
     }
 })

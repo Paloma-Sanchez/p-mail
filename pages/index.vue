@@ -8,7 +8,4 @@
         <MailList class="pl-8"/>
     </main>
 </template>
-
-<style scoped>
-
-</style>
+<style scoped></style>
