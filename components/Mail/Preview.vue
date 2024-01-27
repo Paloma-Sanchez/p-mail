@@ -18,7 +18,6 @@
     const toggleOverlayShow = () => {
         overlayShow.value = !overlayShow.value;
     }
-//class="absolute  bg-orange-100 h-[82px] pt-[2px] ml-20 pr-4 pl-4 left-[80%] -top-0 border-b-2"
 </script>
 
 <template>
@@ -49,12 +48,14 @@
             </div>
             <div 
                 class="mx-auto pl-4 pr-4 cursor-pointer"
-                @click="$emit('toggleStarred', props.index)"
+                @click="$emit('toggleStarred', index, email.id)"
             >
                 <StarFull v-if="email.starred" class="place-content-center"/>
                 <StarOutline v-else/>
             </div>
-            <NuxtLink :to="`/${email.id}`">
+            <NuxtLink 
+                :to="`/${email.id}`"
+                @click="$emit('markRead', index, email.id)">
             <div class="pl-4 pr-4">
                 <p>{{ email.from }}</p>
                 <p class="truncate"><strong>{{ email.subject }}</strong></p>
@@ -67,9 +68,11 @@
         </div >
        
             <MailOverlayOptions v-if="overlayShow"
-                class="h-20 absolute right-[8%] top-0  w-24 bg-orange-400/70 backdrop-blur-sm z-10 "
+                class="h-20 absolute right-[8%] top-0  w-32 bg-orange-400/70 backdrop-blur-sm z-10 "
                 :read="email.read"
-                @click="$emit('toggleRead', props.index)"
+                :archived="email.archived"
+                @toggleArchived="$emit('toggleArchived', index, email.id)"
+                @toggleRead="$emit('toggleRead', index, email.id)"
             />
     
     </div>
