@@ -46,7 +46,11 @@
 
     const onChangeIndex = (n) => {
         const newEmailId = emails.value[n + currentEmailIndex.value].id;
-        router.push({ path: `/${newEmailId}` })
+        router.push({ path: `/${newEmailId}` });
+    }
+
+    const onNavigateBack = () => {
+        router.push({ path: `/` });
     }
 </script>
 
@@ -57,6 +61,7 @@
             :starred="email.starred"
             :archived="email.archived"
             :read="email.read"
+            @navigateBack="onNavigateBack"
             @toggleStarred="onToggleStarred(email)"
             @toggleRead="onToggleRead(email)"
             @toggleArchived="onToggleArchived(email)"

@@ -8,7 +8,7 @@
       "sentAt": "2020-03-27T18:25:43.511Z",
       "archived": false,
       "read": true,
-      "starred": true
+      "starred": false
     },
     {
       "id": "46575105-df77-4d94-aad1-0fcf9e4ddf60",
@@ -16,7 +16,7 @@
       "subject": "2. Have you checked out this NEW feature?",
       "body": "The opening keynote of VueConf US this year was Evan You (the creator of Vue), giving his State of the Vuenion address. He walked us through the journey of getting Vue 3 from a prototype to a reality the past year. He also dove into Vue's overall growth in the community.",
       "sentAt": "2020-03-27T18:25:43.511Z",
-      "archived": false,
+      "archived": true,
       "read": true,
       "starred": false
     },

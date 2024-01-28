@@ -45,14 +45,17 @@
         };
         return emit('nextEmail');
     }
+    //rgb(249, 115, 22)
+    //rgb(234, 88, 12)
 </script>
 <template>
     <div class="flex pt-6 pr-10 justify-between">
         <div class="flex ml-8  w-1/3 justify-between">
             <div>
-                <ArrowLeft/>
+                <ArrowLeft @click="$emit('navigateBack')"/>
             </div>
             <div
+                class=" "
                 @click="$emit('toggleStarred')"
             >
                 <StarOutline v-if="!starred"/>
@@ -76,7 +79,7 @@
                 :class="[
                         'cursor-pointer',
                         {
-                            'bg-orange-100': showArrow === 'first'
+                            'bg-orange-600': showArrow === 'first'
                         }
                         ]"
                 
@@ -93,15 +96,23 @@
             />
         </div>
     </div>
+    
 </template>
 
+
+<style>
+svg:hover {
+    transform: scale(1.2);
+    path{
+        fill:rgb(234, 88, 12);
+    }
+}
+</style>
 <style scoped>
 svg {
     width: 26px;
     height: 26px;
 }
 
-svg:hover {
-    transform: scale(1.2);
-}
+
 </style>
