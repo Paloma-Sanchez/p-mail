@@ -1,7 +1,7 @@
 <template>
     <Navbar/>
     <div class="flex">
-        <SideBar class="p-10"/>
+        <SideBar class=""/>
         <slot/>
     </div>
     

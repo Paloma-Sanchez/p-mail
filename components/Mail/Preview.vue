@@ -44,7 +44,7 @@
                     
             >
             <div class="mx-auto">
-                <input type="checkbox" class="w-6 h-6  text-blue-600 bg-gray-100 border-gray-200 rounded focus:ring-blue-500 focus:ring-4"/>
+                <input type="checkbox" class="w-6 h-6  text-orange-600 bg-orange-100 border-orange-200 rounded focus:ring-orange-500 focus:ring-4"/>
             </div>
             <div 
                 class="mx-auto pl-4 pr-4 cursor-pointer"
@@ -57,13 +57,13 @@
                 :to="`/${email.id}`"
                 @click="$emit('markRead', index, email.id)">
             <div class="pl-4 pr-4">
-                <p>{{ email.from }}</p>
+                <p class="font-body text-gray-400">{{ email.from }}</p>
                 <p class="truncate"><strong>{{ email.subject }}</strong></p>
-                <p class="truncate font-body">{{ email.body }}</p>
+                <p class="truncate font-body text-gray-500">{{ email.body }}</p>
             </div>
             </NuxtLink>
             <div>
-                <p class="break-words">{{ format(new Date(email.sentAt), 'MM dd yyyy' ) }}</p>
+                <p class="break-words font-body text-gray-500">{{ format(new Date(email.sentAt), 'MM dd yyyy' ) }}</p>
             </div>
         </div >
        

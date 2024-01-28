@@ -18,21 +18,22 @@
 
 <template>
     <div class="w-1/4 display:block">
-        <ul class="font-body text-center text-2xl pt-8">
+        <ul class="font-body text-center text-2xl ">
             <NuxtLink to="/">
                 <li 
-                    class="pb-10"
+                    class="pb-8 pt-8 pl-10 pr-10 hover:bg-orange-100 hover:text-orange-500"
                     @click="displayUnarchived"
                 >
                     Inbox
                 </li>
                 <li
-                    class="pb-10"
+                    class="pb-8 pt-8 pl-10 pr-10 hover:bg-orange-100 hover:text-orange-500"
                     @click="displayStarred"
                 >
                     Starred
                 </li>
                 <li
+                    class="pb-8 pt-8 pl-10 pr-10 hover:bg-orange-100 hover:text-orange-500"
                     @click="displayArchived"
                 >
                     Archived

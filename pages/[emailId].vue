@@ -1,36 +1,72 @@
 <script setup>
-    import {format} from 'date-fns';
+    import {useMailListStore} from '../../stores/mailListStore';
     const route = useRoute();
+    const router = useRouter()
     const emailListStore = useMailListStore();
     const email = computed(() => emailListStore.selectedEmail);
     const emailLoading = computed(() => emailListStore.loadingSelectedEmail);
+    const emails = computed(() => emailListStore.emails);
+    onMounted(() => emailListStore.loadAllEmails());
+    const currentEmailIndex = computed(() =>  emails.value.findIndex((object) => object.id === email.value.id));
+    const showArrow = computed(() => {
+            if(currentEmailIndex.value === 0){
+                return 'first';
+            }else if(currentEmailIndex.value === emails.value.length-1){
+                return 'last';
+            } else {
+                return 'middle';
+            }
+    });
+
+    watch(currentEmailIndex, () => {
+        console.log('index', currentEmailIndex.value);
+        console.log('showArrow', showArrow.value);
+        console.log('emails length', emails.value.length);
+    })
+
+    if(!emails.lenght>0){
+            emailListStore.loadAllEmails();
+        }
 
     watch(route, async() => {
-        //console.log('loading a mail');
         await emailListStore.getEmailById(route.params.emailId);
-        //console.log('loaded', email.value);
     },{immediate:true});
 
+    const onToggleStarred = (email) => {
+        emailListStore.toggleStarred(email);
+    };
+
+    const onToggleRead = (email) => {
+        emailListStore.toggleRead(email);
+    };
+
+    const onToggleArchived = (email) => {
+        emailListStore.toggleArchived(email);
+    };
+
+    const onChangeIndex = (n) => {
+        const newEmailId = emails.value[n + currentEmailIndex.value].id;
+        router.push({ path: `/${newEmailId}` })
+    }
 </script>
+
 <template>
-    <Suspense>
-        <template #default>
-    <div class="p-8" >
-        <div></div>
-        <div>
-            <h2 class="text-3xl pb-4">{{ email.subject }}</h2>
-            <div class="flex pb-6 justify-between font-body" >
-                <p>{{ email.from }}</p>
-                <p v-if="!emailLoading" >{{ format(new Date(email.sentAt), 'MM dd yyyy') }}</p>
-            </div>
-            <p class="font-body">{{ email.body }}</p>
-           
-        </div>
+    <div v-if="!emailLoading" class="w-3/4 pr-10">
+        <MailDetailTopBar
+            :showArrow="showArrow"
+            :starred="email.starred"
+            :archived="email.archived"
+            :read="email.read"
+            @toggleStarred="onToggleStarred(email)"
+            @toggleRead="onToggleRead(email)"
+            @toggleArchived="onToggleArchived(email)"
+            @previousEmail="onChangeIndex(-1)"
+            @nextEmail="onChangeIndex(1)"
+        />
+        <MailDetail 
+            :email="email" 
+            :emailLoading="emailLoading" 
+            
+        />
     </div>
-</template>
-<template #fallback>
-    Loading...
-</template>
-</Suspense>
-    
 </template>

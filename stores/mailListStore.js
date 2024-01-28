@@ -7,8 +7,8 @@ export const useMailListStore = defineStore('mailListStore', () => {
     const loadingAllEmails = ref(false);
     const loadingSelectedEmail  = ref(false);
 
-    const updateEmail = (emailId, emailIndex) => {
-        axios.put(`http://localhost:3000/emails/${emailId}`, emails.value[emailIndex]);
+    const updateEmail = (email) => {
+        axios.put(`http://localhost:3000/emails/${email.id}`, email);
     }
 
     const loadAllEmails = async () => {
@@ -25,26 +25,26 @@ export const useMailListStore = defineStore('mailListStore', () => {
        return selectedEmail.value = data.value;
     };
 
-    const toggleStarred = (emailIndex, emailId) => {
+    const toggleStarred = (email) => {
+        //console.log('toggling from store', email)
+        email.starred = !email.starred;
+        updateEmail(email);
+    };
+
+    const toggleRead = (email) => {
+        email.read = !email.read;
+        updateEmail(email);
+    };
+
+    const markRead = (email) => {
+        email.read = true;
+        updateEmail(email);
+    };
+
+    const toggleArchived = (email) => {
         //console.log('toggling from store', emailIndex, emails.value[emailIndex])
-        emails.value[emailIndex].starred = !emails.value[emailIndex].starred;
-        updateEmail(emailId, emailIndex);
-    };
-
-    const toggleRead = (emailIndex, emailId) => {
-        emails.value[emailIndex].read = !emails.value[emailIndex].read;
-        updateEmail(emailId, emailIndex);
-    };
-
-    const markRead = (emailIndex, emailId) => {
-        emails.value[emailIndex].read = true;
-        updateEmail(emailId, emailIndex);
-    };
-
-    const toggleArchived = (emailIndex, emailId) => {
-        //console.log('toggling from store', emailIndex, emails.value[emailIndex])
-        emails.value[emailIndex].archived = !emails.value[emailIndex].archived;
-        updateEmail(emailId, emailIndex);
+        email.archived = !email.archived;
+        updateEmail(email);
     };
 
     return {

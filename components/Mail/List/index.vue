@@ -11,7 +11,7 @@
     onMounted(() => emailListStore.loadAllEmails());
 
     watch([starred, archived], () => {
-        console.log('starred', starred.value, 'archived', archived.value);
+        //console.log('starred', starred.value, 'archived', archived.value);
     }, {immediate:true});
     
     const filteredEmails = computed(() => {
@@ -24,20 +24,20 @@
         }
     })
 
-    const toggleStarred = (emailIndex, emailId) => {
-        emailListStore.toggleStarred(emailIndex, emailId);
+    const toggleStarred = (email) => {
+        emailListStore.toggleStarred(email);
     };
 
-    const toggleRead = (emailIndex, emailId) => {
-        emailListStore.toggleRead(emailIndex, emailId);
+    const toggleRead = (email) => {
+        emailListStore.toggleRead(email);
     };
 
-    const markRead = (emailIndex, emailId) => {
-        emailListStore.markRead(emailIndex, emailId);
+    const markRead = (email) => {
+        emailListStore.markRead(email);
     };
 
-    const toggleArchived = (emailIndex, emailId) => {
-        emailListStore.toggleArchived(emailIndex, emailId);
+    const toggleArchived = (email) => {
+        emailListStore.toggleArchived(email);
     };
 
 </script>
@@ -50,10 +50,10 @@
         <MailPreview 
             :email="email" 
             :index="emailIndex"
-            @toggleStarred="toggleStarred"
-            @toggleRead="toggleRead"
-            @toggleArchived="toggleArchived"
-            @markRead="markRead"
+            @toggleStarred="toggleStarred(email)"
+            @toggleRead="toggleRead(email)"
+            @toggleArchived="toggleArchived(email)"
+            @markRead="markRead(email)"
         />
         </li>
     </ul>
