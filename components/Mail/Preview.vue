@@ -43,11 +43,15 @@
                     }]"
                     
             >
-            <div class="mx-auto">
-                <input type="checkbox" class="w-6 h-6  text-orange-600 bg-orange-100 border-orange-200 rounded focus:ring-orange-500 focus:ring-4"/>
+            <div class="mr-auto">
+                <input 
+                    type="checkbox" 
+                    class="w-4 h-4  text-orange-600 bg-orange-100 border-orange-200 rounded focus:ring-orange-500 focus:ring-4"
+                    @click="$emit('toggleCheckedEmail')"
+                    />
             </div>
             <div 
-                class="mx-auto pl-4 pr-4 cursor-pointer"
+                class="mx-auto pl-4 pr-4 cursor-pointer hover:scale-125 hover:fill-orange-600"
                 @click="$emit('toggleStarred', index, email.id)"
             >
                 <StarFull v-if="email.starred" class="place-content-center"/>
@@ -58,7 +62,7 @@
                 @click="$emit('markRead', index, email.id)">
             <div class="pl-4 pr-4">
                 <p class="font-body text-gray-400">{{ email.from }}</p>
-                <p class="truncate"><strong>{{ email.subject }}</strong></p>
+                <p class="truncate font-['Quattrocento'] text-xl"><strong>{{ email.subject }}</strong></p>
                 <p class="truncate font-body text-gray-500">{{ email.body }}</p>
             </div>
             </NuxtLink>

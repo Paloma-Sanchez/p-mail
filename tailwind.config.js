@@ -13,6 +13,8 @@ export default {
     extend: {},
     fontFamily: {
       'body': ['Montserrat'],
+      'title':['Marcellus'],
+      'pricipal':['Quattrocento']
     }
   },
   plugins: [],

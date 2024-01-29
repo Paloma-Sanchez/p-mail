@@ -49,47 +49,60 @@
     //rgb(234, 88, 12)
 </script>
 <template>
-    <div class="flex pt-6 pr-10 justify-between">
+    <div class="flex pt-6 pr-10 justify-between items-center">
         <div class="flex ml-8  w-1/3 justify-between">
-            <div>
+            <div
+                class="cursor-pointer hover:scale-125 hover:fill-orange-600 "
+            >
                 <ArrowLeft @click="$emit('navigateBack')"/>
             </div>
             <div
-                class=" "
+                class="cursor-pointer hover:scale-125 hover:fill-orange-600 "
                 @click="$emit('toggleStarred')"
             >
                 <StarOutline v-if="!starred"/>
                 <StarFull v-else/>
             </div>
             <div
+                class="cursor-pointer hover:scale-125 hover:fill-orange-600 "
                 @click="$emit('toggleArchived')"
             >
                 <ArchiveMail v-if="!archived"/>
                 <UnarchiveMail v-else/>
             </div>
             <div
+                class="cursor-pointer hover:scale-125 hover:fill-orange-600 "
                 @click="$emit('toggleRead')"
             >
                 <EmailUnread v-if="read"/>
                 <EmailRead v-else/>
             </div>
         </div>
-        <div class="flex">
+        <div class="flex w-16 justify-between items-center">
             <ArrowBack
                 :class="[
-                        'cursor-pointer',
+                        'cursor-pointer', 
+                        'hover:scale-125',
+                        'hover:fill-orange-600',
                         {
-                            'bg-orange-600': showArrow === 'first'
+                            'hover:transform-none': showArrow === 'first',
+                            'hover:fill-slate-200': showArrow === 'first',
+                            'hover:cursor-not-allowed': showArrow === 'first'
                         }
                         ]"
-                
                 @click="onBackArrowClick"
             />
             <ArrowForward
             :class="[
+                'fill-orange-600',
                 'cursor-pointer',
+                'hover:scale-125',
+                'hover:fill-orange-600',
+                
                 {
-                    'bg-orange-100': showArrow === 'last'
+                    'hover:transform-none': showArrow === 'last',
+                    'hover:fill-slate-200': showArrow === 'last',
+                    'hover:cursor-not-allowed': showArrow === 'last'
                 }
                 ]"
                 @click="onForwardArrowClick"
@@ -101,15 +114,15 @@
 
 
 <style>
-svg:hover {
-    transform: scale(1.2);
-    path{
-        fill:rgb(234, 88, 12);
-    }
+.nuxt-icon--fill{
+    fill: inherit;
+}
+.nuxt-icon--fill *{
+    fill: inherit;
 }
 </style>
 <style scoped>
-svg {
+.nuxt-icon {
     width: 26px;
     height: 26px;
 }

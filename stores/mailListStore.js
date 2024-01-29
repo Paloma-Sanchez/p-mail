@@ -6,6 +6,7 @@ export const useMailListStore = defineStore('mailListStore', () => {
     const selectedEmail = ref({});
     const loadingAllEmails = ref(false);
     const loadingSelectedEmail  = ref(false);
+    const checkedEmails = reactive(new Set());
 
     const updateEmail = (email) => {
         axios.put(`http://localhost:3000/emails/${email.id}`, email);
@@ -47,17 +48,27 @@ export const useMailListStore = defineStore('mailListStore', () => {
         updateEmail(email);
     };
 
+    const toggleCheckedEmail = (email) => {
+        if(checkedEmails.has(email)){
+            checkedEmails.delete(email)
+            } else {
+              checkedEmails.add(email);
+            }
+    }
+
+
     return {
         emails,
         loadingAllEmails,
         loadingSelectedEmail,
         selectedEmail,
+        checkedEmails,
+        loadAllEmails,
+        getEmailById,
         toggleStarred,
         toggleRead,
+        markRead,
         toggleArchived,
-        getEmailById,
-        loadAllEmails,
-        markRead
-        
+        toggleCheckedEmail
     }
 })

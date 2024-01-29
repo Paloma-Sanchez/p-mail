@@ -36,7 +36,6 @@
 svg {
     width: 32px;
     height: 32px;
-    fill: white;
 }
 svg:hover{
     transform: scale(1.2);

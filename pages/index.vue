@@ -5,8 +5,10 @@
 
 <template>
     <main>
-        <MailListTopBar class="pl-8 pb-2"/>
-        <MailList class="pl-8"/>
+        <MailListTopBar />
+        <MailList class="ml-8"/>
     </main>
 </template>
-<style scoped></style>
+<style scoped>
+
+</style>

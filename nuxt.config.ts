@@ -13,7 +13,9 @@ export default defineNuxtConfig({
     ['@nuxtjs/google-fonts', {
       families: {
         Montserrat:true,
-        Manrope: true
+        Manrope: true,
+        Marcellus:true,
+        Quattrocento:[400, 700]
       }
     }],
     'nuxt-svgo',

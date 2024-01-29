@@ -24,21 +24,25 @@
         }
     })
 
-    const toggleStarred = (email) => {
+    const onToggleStarred = (email) => {
         emailListStore.toggleStarred(email);
     };
 
-    const toggleRead = (email) => {
+    const onToggleRead = (email) => {
         emailListStore.toggleRead(email);
     };
 
-    const markRead = (email) => {
+    const onMarkRead = (email) => {
         emailListStore.markRead(email);
     };
 
-    const toggleArchived = (email) => {
+    const onToggleArchived = (email) => {
         emailListStore.toggleArchived(email);
     };
+
+    const onToggleCheckedEmail = (email) => {
+        emailListStore.toggleCheckedEmail(email);
+    }
 
 </script>
 
@@ -50,10 +54,11 @@
         <MailPreview 
             :email="email" 
             :index="emailIndex"
-            @toggleStarred="toggleStarred(email)"
-            @toggleRead="toggleRead(email)"
-            @toggleArchived="toggleArchived(email)"
-            @markRead="markRead(email)"
+            @toggleStarred="onToggleStarred(email)"
+            @toggleRead="onToggleRead(email)"
+            @toggleArchived="onToggleArchived(email)"
+            @markRead="onMarkRead(email)"
+            @toggleCheckedEmail="onToggleCheckedEmail(email)"
         />
         </li>
     </ul>
