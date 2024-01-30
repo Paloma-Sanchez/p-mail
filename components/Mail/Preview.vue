@@ -2,8 +2,9 @@
     import StarOutline from '../../assets/svg/KidStarOutline.svg';
     import StarFull from '../../assets/svg/KidStarSharp.svg';
     import {format} from 'date-fns';
+    import {useMailListStore} from '../../stores/mailListStore';
+    const emailListStore = useMailListStore();
     const overlayShow = ref(false);
-
     const props = defineProps({
         email:{
             type: Object,
@@ -15,9 +16,17 @@
         }
     });
 
+    const checked = computed(() => emailListStore.isChecked(props.email));
+
+    onMounted(() =>{
+        console.log('hi');
+    });
+
     const toggleOverlayShow = () => {
         overlayShow.value = !overlayShow.value;
     }
+
+    
 </script>
 
 <template>
@@ -25,7 +34,7 @@
     <div
         @mouseenter="toggleOverlayShow"
         @mouseleave="toggleOverlayShow"
-        class="relative "
+        class="c-preview relative "
     >
         <div :class="[
                     'grid', 
@@ -47,7 +56,8 @@
                 <input 
                     type="checkbox" 
                     class="w-4 h-4  text-orange-600 bg-orange-100 border-orange-200 rounded focus:ring-orange-500 focus:ring-4"
-                    @click="$emit('toggleCheckedEmail')"
+                    @change="$emit('toggleCheckedEmail')"
+                    :checked="checked"
                     />
             </div>
             <div 

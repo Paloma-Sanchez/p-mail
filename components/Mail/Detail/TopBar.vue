@@ -45,8 +45,6 @@
         };
         return emit('nextEmail');
     }
-    //rgb(249, 115, 22)
-    //rgb(234, 88, 12)
 </script>
 <template>
     <div class="flex pt-6 pr-10 justify-between items-center">

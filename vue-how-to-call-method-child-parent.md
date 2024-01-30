@@ -85,7 +85,7 @@ Then, we would need to identify each `FormField` component instance in our `Form
 
 ### 3. Call the method from the parent
 
-Good! Now that we added `ref` to each `FormField` instance, we can easily refer to them from our TypeScript. If you would like to focus on, say, the email field from the `Form` parent, you can call:
+Great job! Now that we added `ref` to each `FormField` instance, we can easily refer to them from our TypeScript. If you would like to focus on, say, the email field from the `Form` parent, you can call:
 
 ```typescript
 // -- Run this code from a method in the Form parent: --
