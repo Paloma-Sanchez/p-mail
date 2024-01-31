@@ -5,22 +5,34 @@
     const emailListStore = useMailListStore();
     const email = computed(() => emailListStore.selectedEmail);
     const emailLoading = computed(() => emailListStore.loadingSelectedEmail);
-    const emails = computed(() => emailListStore.emails);
+    const emails = computed(() => emailListStore.filteredEmails);
+    const emailsLength = computed(()=>emails.value.length);
     onMounted(() => emailListStore.loadAllEmails());
     const currentEmailIndex = computed(() =>  emails.value.findIndex((object) => object.id === email.value.id));
-    const showArrow = computed(() => {
-            if(currentEmailIndex.value === 0){
-                return 'first';
-            }else if(currentEmailIndex.value === emails.value.length-1){
-                return 'last';
+    const showNextArrow = computed(() => {
+            if(emailsLength.value===1){
+                return false;
+            }else if(currentEmailIndex.value === emailsLength.value-1){
+                return false;
             } else {
-                return 'middle';
+                return true;
+            }
+    });
+    const showLastArrow = computed(() => {
+            if(emailsLength.value===1){
+                return false;
+            }
+            if(currentEmailIndex.value === 0){
+                return false;
+            } else {
+                return true;
             }
     });
 
     watch(currentEmailIndex, () => {
         console.log('index', currentEmailIndex.value);
-        console.log('showArrow', showArrow.value);
+        console.log('showANextArrow', showNextArrow.value);
+        console.log('showLastArrow', showLastArrow.value);
         console.log('emails length', emails.value.length);
     })
 
@@ -57,7 +69,8 @@
 <template>
     <div v-if="!emailLoading" class="c-detail-container">
         <MailDetailTopBar
-            :showArrow="showArrow"
+            :showNextArrow="showNextArrow"
+            :showLastArrow="showLastArrow"
             :starred="email.starred"
             :archived="email.archived"
             :read="email.read"

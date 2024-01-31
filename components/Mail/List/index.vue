@@ -29,20 +29,22 @@
 </script>
 
 <template>
-    <ul :key="'emails_' + currentFilter" class="c-list ml-8 w-[98%]">
-        <li v-for="(email, emailIndex) in filteredEmails" 
-            :key="'email_' + email.id"
-            class="relative"
-        >
-            <MailPreview 
-                :email="email" 
-                :index="emailIndex"
-                @toggleStarred="onToggleStarred(email)"
-                @toggleRead="onToggleRead(email)"
-                @toggleArchived="onToggleArchived(email)"
-                @markRead="onMarkRead(email)"
-                @toggleCheckedEmail="onToggleCheckedEmail(email)"
-            />
-        </li>
-    </ul>
+<ul :key="'emails_' + currentFilter" class="c-list ml-8 w-[98%]">
+    <li v-for="(email, emailIndex) in filteredEmails" 
+        :key="'email_' + email.id"
+        class="relative"
+    >
+        <MailPreview 
+            :email="email" 
+            :index="emailIndex"
+            @toggleStarred="onToggleStarred(email)"
+            @toggleRead="onToggleRead(email)"
+            @toggleArchived="onToggleArchived(email)"
+            @markRead="onMarkRead(email)"
+            @toggleCheckedEmail="onToggleCheckedEmail(email)"
+        />
+    </li>
+</ul>
+ 
+
 </template>

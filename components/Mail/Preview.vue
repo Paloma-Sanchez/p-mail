@@ -52,7 +52,16 @@
             <div class="mr-auto">
                 <input 
                     type="checkbox" 
-                    class="w-4 h-4  text-orange-600 bg-orange-100 border-orange-200 rounded focus:ring-orange-500 focus:ring-4"
+                    :class="['w-4',
+                    'h-4',
+                    'text-orange-600',
+                    'rounded',
+                    'focus:ring-orange-500',
+                    'Focus:ring-4',
+                    {
+                        'accent-orange-600': checked,
+                    }
+                    ]"
                     @change="$emit('toggleCheckedEmail')"
                     :checked="checked"
                     />

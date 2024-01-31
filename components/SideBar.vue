@@ -48,7 +48,7 @@
                     @click="displayUnarchived"
                 >
                 <NuxtLink to="/" class="flex items-center">
-                    <Inbox class="mr-2"/>
+                    <Inbox class="mr-2 flex-[0,0,auto]"/>
                     <p class="tablet:hidden"> Inbox</p>
                 </NuxtLink>
                 </li>
@@ -74,7 +74,7 @@
                     @click="displayStarred"
                 >
                 <NuxtLink to="/" class="flex items-center">
-                    <StarFull class="mr-2"/>
+                    <StarFull class="mr-2 flex-[0_0_auto]"/>
                     <p class="tablet:hidden">Starred</p>
                 </NuxtLink>
                 </li>
@@ -100,7 +100,7 @@
                     @click="displayArchived"
                 >
                 <NuxtLink to="/" class="flex items-center">
-                    <Archive class="mr-2" />
+                    <Archive class="mr-2 flex-[0_0_auto]" />
                     <p class="tablet:hidden">Archived</p>
                 </NuxtLink>
                 </li>

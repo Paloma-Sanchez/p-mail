@@ -10,9 +10,13 @@
     import ArrowForward from '../../../assets/svg/ArrowForwardIosRounded.svg';
     
     const props = defineProps({
-        showArrow:{
-            type:String,
-            default:'first'
+        showNextArrow:{
+            type:Boolean,
+            default:false
+        },
+        showLastArrow:{
+            type:Boolean,
+            default:false
         },
         starred:{
             type:Boolean,
@@ -33,14 +37,13 @@
     console.log(props.read);
 
     const onBackArrowClick = () => {
-        console.log('backclick', props.showArrow);
-        if(props.showArrow === 'first'){
+        if(!props.showLastArrow){
             return;
         };
         return emit('previousEmail');
     }
     const onForwardArrowClick = () => {
-        if(props.showArrow === 'last'){
+        if(!props.showNextArrow){
             return;
         };
         return emit('nextEmail');
@@ -83,9 +86,9 @@
                         'hover:scale-125',
                         'hover:fill-orange-600',
                         {
-                            'hover:transform-none': showArrow === 'first',
-                            'hover:fill-slate-200': showArrow === 'first',
-                            'hover:cursor-not-allowed': showArrow === 'first'
+                            'hover:transform-none': !showLastArrow,
+                            'hover:fill-slate-200': !showLastArrow,
+                            'hover:cursor-not-allowed': !showLastArrow
                         }
                         ]"
                 @click="onBackArrowClick"
@@ -96,11 +99,10 @@
                 'cursor-pointer',
                 'hover:scale-125',
                 'hover:fill-orange-600',
-                
                 {
-                    'hover:transform-none': showArrow === 'last',
-                    'hover:fill-slate-200': showArrow === 'last',
-                    'hover:cursor-not-allowed': showArrow === 'last'
+                    'hover:transform-none': !showNextArrow,
+                    'hover:fill-slate-200': !showNextArrow,
+                    'hover:cursor-not-allowed': !showNextArrow,
                 }
                 ]"
                 @click="onForwardArrowClick"

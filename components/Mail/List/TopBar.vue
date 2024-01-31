@@ -17,7 +17,6 @@
     const checked = computed(() => allEmailsSelected.value); 
     const starred = ref(false);
     const archived = ref(false);
-    const read= ref(false);
     const allEmailsAreRead = computed(() => Array.from(checkedEmails).every(email => email.read));
     const noEmailRead = computed(() => Array.from(checkedEmails).every(email => !email.read));
 
@@ -43,6 +42,10 @@
             return [starred, archived];
         });
 
+    const handleRefresh = () => {
+            emailListStore.loadAllEmails();
+    }
+
     const onBulkStar = () => {
         emailListStore.bulkStar();
     };
@@ -65,21 +68,27 @@
     <div class="flex h-12 w-[90%] pl-8 bg-orange-500 items-center rounded-t-lg ml-8 mb-2">
         <input 
             type="checkbox" 
-            class="w-4
-                    h-4
-                    text-orange-600
-                    bg-orange-100
-                    border-orange-200
-                    rounded
-                    focus:ring-orange-500
-                    Focus:ring-4"
+            id="bulkCheckbox"
+            :class="['w-4',
+                    'h-4',
+                    'text-orange-600',
+                    'rounded',
+                    'focus:ring-orange-500',
+                    'Focus:ring-4',
+                    {
+                        'accent-white': checked,
+                        'bg-orange-500': checked
+                    }
+                    ]"
             @change="toggleSelectAllEmails"
             :checked="checked"
         />
+        <label for="bulkCheckbox"></label>
         <div class="fill-white">
             <Refresh
                 class="ml-6 cursor-pointer hover:scale-125 hover:fill-orange-100"
-            />
+                @click="handleRefresh"
+                />
         </div>
         <div class="flex justify-between w-52 ml-7 fill-white" v-show="checkedEmails.size">
             <div
@@ -119,4 +128,5 @@ svg {
     width: 28px;
     height: 28px;
 }
+
 </style>
