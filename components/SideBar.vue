@@ -23,7 +23,7 @@
 </script>
 
 <template>
-    <div class="w-1/3 display:block pl-8">
+    <div class="max-w-[203px] display:block pl-8">
         <ul class="[font-body text-center text-2xl ]">
                 <li 
                     :class="[
@@ -56,8 +56,8 @@
                 :class="[
                     'pb-8', 
                     'pt-8', 
-                    'pl-10', 
-                    'pr-10',
+                    'pl-8', 
+                    'pr-8',
                     'tablet:pl-2',
                     'tablet:pr-0',
                     'hover:bg-orange-100',
@@ -82,8 +82,8 @@
                     :class="[
                         'pb-8', 
                         'pt-8', 
-                        'pl-10', 
-                        'pr-10',
+                        'pl-6', 
+                        'pr-6',
                         'tablet:pl-2',
                         'tablet:pr-0',
                         'hover:bg-orange-100',
