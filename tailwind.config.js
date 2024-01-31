@@ -10,13 +10,18 @@ export default {
     "./error.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'tablet': {'max':'843px'},
+      }
+    },
     fontFamily: {
       'body': ['Montserrat'],
       'title':['Marcellus'],
       'pricipal':['Quattrocento'],
       'logo': ['Lobster']
-    }
+    },
+   
   },
   plugins: [],
 }

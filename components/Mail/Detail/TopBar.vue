@@ -47,8 +47,8 @@
     }
 </script>
 <template>
-    <div class="flex pt-6 pr-10 justify-between items-center">
-        <div class="flex ml-8  w-1/3 justify-between">
+    <div class="flex pt-6 pr-10 w-[90%] justify-between items-center">
+        <div class="flex ml-8  w-1/3 justify-between fill-slate-700">
             <div
                 class="cursor-pointer hover:scale-125 hover:fill-orange-600 "
             >
@@ -76,7 +76,7 @@
                 <EmailRead v-else/>
             </div>
         </div>
-        <div class="flex w-16 justify-between items-center">
+        <div class="flex w-16 justify-between items-center fill-slate-700">
             <ArrowBack
                 :class="[
                         'cursor-pointer', 

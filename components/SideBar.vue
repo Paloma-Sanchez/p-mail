@@ -23,19 +23,22 @@
 </script>
 
 <template>
-    <div class="w-1/3 display:block">
-        <ul class="font-body text-center text-2xl ">
+    <div class="w-1/3 display:block pl-8">
+        <ul class="[font-body text-center text-2xl ]">
                 <li 
                     :class="[
                             'pb-8', 
                             'pt-8', 
                             'pl-10', 
                             'pr-10',
+                            'tablet:pl-2',
+                            'tablet:pr-0',
                             'hover:bg-orange-100',
                             'hover:text-orange-500',
+                            'hover:stroke-orange-500',
                             'fill-white',
-                            'stroke-slate-700',
                             {
+                                'stroke-slate-700':currentFilter!=='inbox',
                                 'stroke-orange-600':currentFilter==='inbox',
                                 'text-slate-700':currentFilter!=='inbox',
                                 'text-orange-600':currentFilter==='inbox',
@@ -46,7 +49,7 @@
                 >
                 <NuxtLink to="/" class="flex items-center">
                     <Inbox class="mr-2"/>
-                    Inbox
+                    <p class="tablet:hidden"> Inbox</p>
                 </NuxtLink>
                 </li>
                 <li
@@ -55,8 +58,11 @@
                     'pt-8', 
                     'pl-10', 
                     'pr-10',
+                    'tablet:pl-2',
+                    'tablet:pr-0',
                     'hover:bg-orange-100',
                     'hover:text-orange-500',
+                    'hover:fill-orange-500',
                     {
                         'fill-slate-700':currentFilter!=='starred',
                         'fill-orange-600':currentFilter==='starred',
@@ -67,9 +73,9 @@
                     ]"
                     @click="displayStarred"
                 >
-                <NuxtLink to="/" class="flex items-cente">
+                <NuxtLink to="/" class="flex items-center">
                     <StarFull class="mr-2"/>
-                    Starred
+                    <p class="tablet:hidden">Starred</p>
                 </NuxtLink>
                 </li>
                 <li
@@ -78,8 +84,11 @@
                         'pt-8', 
                         'pl-10', 
                         'pr-10',
+                        'tablet:pl-2',
+                        'tablet:pr-0',
                         'hover:bg-orange-100',
                         'hover:text-orange-500',
+                        'hover:fill-orange-500',
                         {
                             'fill-slate-700':currentFilter!=='archived',
                             'fill-orange-600':currentFilter==='archived',
@@ -91,8 +100,8 @@
                     @click="displayArchived"
                 >
                 <NuxtLink to="/" class="flex items-center">
-                    <Archive class="mr-2"/>
-                    Archived
+                    <Archive class="mr-2" />
+                    <p class="tablet:hidden">Archived</p>
                 </NuxtLink>
                 </li>
         </ul>

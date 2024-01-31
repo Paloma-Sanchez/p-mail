@@ -25,12 +25,9 @@
     const toggleOverlayShow = () => {
         overlayShow.value = !overlayShow.value;
     }
-
-    
 </script>
 
 <template>
-
     <div
         @mouseenter="toggleOverlayShow"
         @mouseleave="toggleOverlayShow"
@@ -44,7 +41,7 @@
                     'justify-center',
                     'w-11/12',
                     'pl-8',
-                    'pr-8',
+                    
                     'border-b-2',
                     'relative',
                     {
@@ -61,7 +58,7 @@
                     />
             </div>
             <div 
-                class="mx-auto pl-4 pr-4 cursor-pointer hover:scale-125 hover:fill-orange-600"
+                class="mx-auto pl-4 pr-4 cursor-pointer hover:scale-125 hover:fill-orange-600 fill-slate-700 str"
                 @click="$emit('toggleStarred', index, email.id)"
             >
                 <StarFull v-if="email.starred" class="place-content-center"/>

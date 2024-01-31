@@ -65,13 +65,14 @@
     <div class="flex h-12 w-[90%] pl-8 bg-orange-500 items-center rounded-t-lg ml-8 mb-2">
         <input 
             type="checkbox" 
-            class="['w-4 h-4',
-                    'text-orange-600',
-                    'bg-orange-100',
-                    'border-orange-200',
-                    'rounded',
-                    'focus:ring-orange-500',
-                    'Focus:ring-4']"
+            class="w-4
+                    h-4
+                    text-orange-600
+                    bg-orange-100
+                    border-orange-200
+                    rounded
+                    focus:ring-orange-500
+                    Focus:ring-4"
             @change="toggleSelectAllEmails"
             :checked="checked"
         />

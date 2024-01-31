@@ -55,7 +55,7 @@
 </script>
 
 <template>
-    <div v-if="!emailLoading" class="w-3/4 pr-10">
+    <div v-if="!emailLoading" class="c-detail-container">
         <MailDetailTopBar
             :showArrow="showArrow"
             :starred="email.starred"

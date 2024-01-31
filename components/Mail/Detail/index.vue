@@ -14,7 +14,7 @@
 </script>
 
 <template>
-    <div class="p-8" >
+    <div class="p-8 w-[90%] pr-10" >
         <div>
             <h2 class="text-3xl pb-4 font-['Quattrocento'] font-bold">{{ email.subject }}</h2>
             <div class="flex pb-6 justify-between font-body text-gray-500" >
