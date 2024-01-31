@@ -22,7 +22,7 @@ export const useMailListStore = defineStore('mailListStore', () => {
             return 'archived';
         }else{
             return 'inbox';
-        }
+        };
     });
     //Filter all the emails according to selected inbox
     const filteredEmails = computed(() => {
@@ -32,7 +32,7 @@ export const useMailListStore = defineStore('mailListStore', () => {
             return emails.value.filter((email) => email.archived);
         }else{
             return emails.value.filter((email) => !email.archived);
-        }
+        };
     });
 
     const emailsCount = computed(() => filteredEmails.value.length);
@@ -197,5 +197,5 @@ export const useMailListStore = defineStore('mailListStore', () => {
         bulkArchive,
         bulkMarkRead,
         bulkMarkUnread
-    }
+    };
 })

@@ -18,13 +18,9 @@
 
     const checked = computed(() => emailListStore.isChecked(props.email));
 
-    onMounted(() =>{
-        console.log('hi');
-    });
-
     const toggleOverlayShow = () => {
         overlayShow.value = !overlayShow.value;
-    }
+    };
 </script>
 
 <template>
@@ -68,14 +64,14 @@
             </div>
             <div 
                 class="mx-auto pl-4 pr-4 cursor-pointer hover:scale-125 hover:fill-orange-600 fill-slate-700 str"
-                @click="$emit('toggleStarred', index, email.id)"
+                @click="$emit('toggleStarred')"
             >
                 <StarFull v-if="email.starred" class="place-content-center"/>
                 <StarOutline v-else/>
             </div>
             <NuxtLink 
                 :to="`/${email.id}`"
-                @click="$emit('markRead', index, email.id)">
+                @click="$emit('markRead')">
             <div class="pl-4 pr-4">
                 <p class="font-body text-gray-400">{{ email.from }}</p>
                 <p class="truncate font-['Quattrocento'] text-xl"><strong>{{ email.subject }}</strong></p>
@@ -91,8 +87,8 @@
                 class="h-20 absolute right-[8%] top-0  w-32 bg-orange-400/70 backdrop-blur-sm z-10 "
                 :read="email.read"
                 :archived="email.archived"
-                @toggleArchived="$emit('toggleArchived', index, email.id)"
-                @toggleRead="$emit('toggleRead', index, email.id)"
+                @toggleArchived="$emit('toggleArchived')"
+                @toggleRead="$emit('toggleRead')"
             />
     
     </div>

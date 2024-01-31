@@ -16,7 +16,7 @@
                 return false;
             } else {
                 return true;
-            }
+            };
     });
     const showLastArrow = computed(() => {
             if(emailsLength.value===1){
@@ -26,15 +26,8 @@
                 return false;
             } else {
                 return true;
-            }
+            };
     });
-
-    watch(currentEmailIndex, () => {
-        console.log('index', currentEmailIndex.value);
-        console.log('showANextArrow', showNextArrow.value);
-        console.log('showLastArrow', showLastArrow.value);
-        console.log('emails length', emails.value.length);
-    })
 
     if(!emails.lenght>0){
             emailListStore.loadAllEmails();
@@ -59,11 +52,11 @@
     const onChangeIndex = (n) => {
         const newEmailId = emails.value[n + currentEmailIndex.value].id;
         router.push({ path: `/${newEmailId}` });
-    }
+    };
 
     const onNavigateBack = () => {
         router.push({ path: `/` });
-    }
+    };
 </script>
 
 <template>

@@ -24,7 +24,7 @@
 
     const onToggleCheckedEmail = (email) => {
         emailListStore.toggleCheckedEmail(email);
-    }
+    };
 
 </script>
 
