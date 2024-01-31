@@ -3,7 +3,6 @@
     const emailListStore = useMailListStore();
     const filteredEmails = computed(() => emailListStore.filteredEmails) ;
     const currentFilter = computed(() => emailListStore.currentFilter) ;
-    const preview = ref([]);
 
     onMounted(() => emailListStore.loadAllEmails());
 
@@ -30,13 +29,12 @@
 </script>
 
 <template>
-    <ul :key="'emails_' + currentFilter">
+    <ul :key="'emails_' + currentFilter" class="c-list ml-8">
         <li v-for="(email, emailIndex) in filteredEmails" 
             :key="'email_' + email.id"
             class="relative"
         >
             <MailPreview 
-                ref="preview"
                 :email="email" 
                 :index="emailIndex"
                 @toggleStarred="onToggleStarred(email)"

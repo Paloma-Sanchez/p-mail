@@ -17,7 +17,7 @@
 </script>
 
 <template>
-    <div class="flex items-center justify-around">
+    <div class="c-overlay-options flex items-center justify-around">
         <div 
             @click="$emit('toggleArchived')"
         >
