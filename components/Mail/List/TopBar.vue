@@ -62,7 +62,7 @@
 </script>
 
 <template>
-    <div class="flex h-12 w-[90%] pl-8 bg-orange-50 hover:bg-orange-100 items-center rounded-t-lg ml-8 mb-2">
+    <div class="flex h-12 w-[90%] pl-8 bg-orange-500 items-center rounded-t-lg ml-8 mb-2">
         <input 
             type="checkbox" 
             class="['w-4 h-4',
@@ -75,14 +75,14 @@
             @change="toggleSelectAllEmails"
             :checked="checked"
         />
-        <div>
+        <div class="fill-white">
             <Refresh
-                class="ml-6"
+                class="ml-6 cursor-pointer hover:scale-125 hover:fill-orange-100"
             />
         </div>
-        <div class="flex justify-between w-52 ml-7" v-show="checkedEmails.size">
+        <div class="flex justify-between w-52 ml-7 fill-white" v-show="checkedEmails.size">
             <div
-                class="cursor-pointer hover:scale-125 hover:fill-orange-600 "
+                class="cursor-pointer hover:scale-125 hover:fill-orange-100"
                 @click="onBulkStar"
             >
                 <StarFull v-if="starred"/>
@@ -90,7 +90,7 @@
                 
             </div>
             <div
-                class="cursor-pointer hover:scale-125 hover:fill-orange-600 "
+                class="cursor-pointer hover:scale-125 hover:fill-orange-100"
                 @click="onBulkArchived"
             >
                 <UnarchiveMail v-if="archived"/>
@@ -98,13 +98,13 @@
                 
             </div>
             <div
-                class="cursor-pointer hover:scale-125 hover:fill-orange-600 "
+                class="cursor-pointer hover:scale-125 hover:fill-orange-100"
                 @click="onBulkMarkRead"
             >
                 <EmailRead v-if="!allEmailsAreRead"/>
             </div>
             <div
-                class="cursor-pointer hover:scale-125 hover:fill-orange-600 "
+                class="cursor-pointer hover:scale-125 hover:fill-orange-100"
                 @click="onBulkMarkUnread"
             >
                 <EmailUnread v-if="!noEmailRead"/>

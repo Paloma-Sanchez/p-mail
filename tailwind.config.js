@@ -14,7 +14,8 @@ export default {
     fontFamily: {
       'body': ['Montserrat'],
       'title':['Marcellus'],
-      'pricipal':['Quattrocento']
+      'pricipal':['Quattrocento'],
+      'logo': ['Lobster']
     }
   },
   plugins: [],

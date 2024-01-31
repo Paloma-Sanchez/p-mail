@@ -15,7 +15,8 @@ export default defineNuxtConfig({
         Montserrat:true,
         Manrope: true,
         Marcellus:true,
-        Quattrocento:[400, 700]
+        Quattrocento:[400, 700],
+        Lobster: true
       }
     }],
     'nuxt-svgo',

@@ -34,7 +34,10 @@
                             'hover:bg-orange-100',
                             'hover:text-orange-500',
                             'fill-white',
+                            'stroke-slate-700',
                             {
+                                'stroke-orange-600':currentFilter==='inbox',
+                                'text-slate-700':currentFilter!=='inbox',
                                 'text-orange-600':currentFilter==='inbox',
                                 'font-semibold':currentFilter==='inbox'
                             }
@@ -55,7 +58,9 @@
                     'hover:bg-orange-100',
                     'hover:text-orange-500',
                     {
+                        'fill-slate-700':currentFilter!=='starred',
                         'fill-orange-600':currentFilter==='starred',
+                        'text-slate-700':currentFilter!=='starred',
                         'text-orange-600':currentFilter==='starred',
                         'font-semibold':currentFilter==='starred'
                     }
@@ -76,7 +81,9 @@
                         'hover:bg-orange-100',
                         'hover:text-orange-500',
                         {
+                            'fill-slate-700':currentFilter!=='archived',
                             'fill-orange-600':currentFilter==='archived',
+                            'text-slate-700':currentFilter!=='archived',
                             'text-orange-600':currentFilter==='archived',
                             'font-semibold':currentFilter==='archived'
                         }
