@@ -48,19 +48,19 @@ export const useMailListStore = defineStore('mailListStore', () => {
      /**** METHODS****/
      //This is a helper method used in the following methods
     const updateEmail = (email) => {
-        axios.put(`http://localhost:3000/emails/${email.id}`, email);
+        axios.put(`https://pmail.paloma-sanchez.com/emails/${email.id}`, email);
     };
 
     const loadAllEmails = async () => {
         loadingAllEmails.value = true;
-        const {data} = await useFetch('http://localhost:3000/emails');
+        const {data} = await useFetch('https://pmail.paloma-sanchez.com/emails');
         loadingAllEmails.value = false;
         return emails.value = data.value;
     };
 
     const getEmailById = async (emailId) => {
        loadingSelectedEmail.value= true;
-       const {data} = await useFetch(`http://localhost:3000/emails/${emailId}`);
+       const {data} = await useFetch(`https://pmail.paloma-sanchez.com/emails/${emailId}`);
        loadingSelectedEmail.value= false; 
        return selectedEmail.value = data.value;
     };
